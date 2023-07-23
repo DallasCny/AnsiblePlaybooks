@@ -1,6 +1,6 @@
 ---
 - name: Install standard utils
-  hosts: Main
+  hosts: New-Setups
   become: yes
   
   tasks:
