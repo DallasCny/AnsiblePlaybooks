@@ -2,8 +2,7 @@
 - name: Add new user and set SSH key as only login method
   hosts: New-Setups
   become: yes
-  remote_user: root
-
+  
   tasks:
     - name: Add new user
       user:
@@ -16,7 +15,7 @@
       authorized_key:
         user: "dallas"
         state: present
-        key: "{{ ansible_env.SSH-PUB-KEY }}"
+        key: "{{ ansible_env.SSH_PUB_KEY }}"
 
     - name: Disable password-based SSH authentication
       lineinfile:
