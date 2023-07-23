@@ -11,7 +11,7 @@
         createhome: yes
         shell: /bin/bash
 
-    - name: Copy the SSH public key to the new user's authorized_keys
+    - name: Copy ssh to new user
       authorized_key:
         user: "dallas"
         state: present
