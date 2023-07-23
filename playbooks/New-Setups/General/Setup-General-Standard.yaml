@@ -1,0 +1,16 @@
+---
+- name: Install standard utils
+  hosts: Main
+  become: yes
+  
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+    - name: Install utils
+      apt:
+        name: 
+          - qemu-guest-agent
+          - nano
+          - htop
+          state: present
