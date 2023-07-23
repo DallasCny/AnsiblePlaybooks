@@ -1,0 +1,33 @@
+---
+- name: Add new user and set SSH key as only login method
+  hosts: New-Setups
+  become: yes
+
+  tasks:
+    - name: Add new user
+      user:
+        name: "dallas"
+        state: present
+        createhome: yes
+        shell: /bin/bash
+
+    - name: Copy the SSH public key to the new user's authorized_keys
+      authorized_key:
+        user: "dallas"
+        state: present
+        key: "{{ ansible_env.SSH-PUB-KEY }}"
+
+    - name: Disable password-based SSH authentication
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+        state: present
+      notify:
+        - Restart SSH service
+
+  handlers:
+    - name: Restart SSH service
+      service:
+        name: sshd
+        state: restarted
