@@ -6,14 +6,14 @@
   tasks:
     - name: Add new user
       user:
-        name: "dallas"
+        name: dallas
         state: present
         createhome: yes
         shell: /bin/bash
 
     - name: Copy the SSH public key to the new user's authorized_keys
       authorized_key:
-        user: "dallas"
+        user: dallas
         state: present
         key: "{{ ansible_env.SSH-PUB-KEY }}"
 
