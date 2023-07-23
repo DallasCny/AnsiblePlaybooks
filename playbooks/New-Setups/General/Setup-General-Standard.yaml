@@ -13,4 +13,4 @@
           - qemu-guest-agent
           - nano
           - htop
-          state: present
+        state: present
