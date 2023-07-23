@@ -15,7 +15,7 @@
       authorized_key:
         user: "dallas"
         state: present
-        key: "{{ ansible_env.SSH_PUB_KEY }}"
+        key: "{{ lookup('env', 'main_SSH_PUB_KEY') }}"
 
     - name: Disable password-based SSH authentication
       lineinfile:
