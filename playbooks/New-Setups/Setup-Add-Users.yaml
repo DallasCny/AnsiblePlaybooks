@@ -2,7 +2,7 @@
 - name: Add new user and set SSH key as only login method
   hosts: New-Setups
   become: yes
-  become_user: root
+  remote_user: root
 
   tasks:
     - name: Add new user
